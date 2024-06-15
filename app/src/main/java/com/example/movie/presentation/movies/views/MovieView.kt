@@ -7,11 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -30,7 +26,7 @@ fun MovieView(
     val state = viewModel.state.value
 
     Scaffold(
-        topBar = { AppBar() },
+        topBar = { MovieAppBar() },
         content = { paddingValues ->
             Box(
                 modifier = Modifier
@@ -43,7 +39,6 @@ fun MovieView(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(20.dp),
-                        hint = "Batman",
                     ) {
                         viewModel.onEvent(MoviesEvent.Search(it))
                     }
@@ -60,26 +55,5 @@ fun MovieView(
                 }
             }
         }
-    )
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun AppBar() {
-    TopAppBar(
-        title = {
-            Text("Movie Search")
-        },
-        colors = TopAppBarColors(
-            containerColor = Color.Black,
-            actionIconContentColor = Color.White,
-            navigationIconContentColor = Color.White,
-            scrolledContainerColor = Color.White,
-            titleContentColor = Color.White,
-        ),
-        /*colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer,
-            titleContentColor = MaterialTheme.colorScheme.primary,
-        ),*/
     )
 }

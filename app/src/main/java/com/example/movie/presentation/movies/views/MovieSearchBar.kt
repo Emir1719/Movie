@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.selection.TextSelectionColors
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -23,7 +24,7 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun MovieSearchBar(
     modifier: Modifier,
-    hint: String = "",
+    hint: String = "Search a movie",
     onSearch: (String) -> Unit = {},
 ) {
     var text by remember { mutableStateOf("") }
@@ -56,6 +57,14 @@ fun MovieSearchBar(
             colors = TextFieldDefaults.colors(
                 focusedContainerColor = Color.White,
                 unfocusedContainerColor = Color.White,
+                unfocusedIndicatorColor = Color.Transparent,
+                disabledIndicatorColor = Color.Transparent,
+                focusedIndicatorColor = Color.Transparent,
+                cursorColor = Color.Black,
+                selectionColors = TextSelectionColors(
+                    backgroundColor = Color.LightGray,
+                    handleColor = Color.Black,
+                )
             ),
             modifier = Modifier
                 .fillMaxWidth()

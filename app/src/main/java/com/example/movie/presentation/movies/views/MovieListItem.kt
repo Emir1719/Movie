@@ -17,6 +17,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
@@ -49,7 +50,7 @@ fun MovieListItem(
         ) {
             ItemText(
                 text = movie.Title,
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.titleLarge
             )
             ItemText(
                 text = movie.Year,
@@ -67,8 +68,11 @@ private fun ItemText(
     Text(
         text = text,
         style = style,
-        modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp),
+        modifier = Modifier
+            .padding(horizontal = 20.dp, vertical = 10.dp)
+            .fillMaxWidth(),
         overflow = TextOverflow.Ellipsis,
+        textAlign = TextAlign.Center,
         color = Color.White,
     )
 }

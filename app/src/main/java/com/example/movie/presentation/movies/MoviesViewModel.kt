@@ -18,8 +18,11 @@ class MoviesViewModel @Inject constructor(
 
     private val _state = mutableStateOf(MoviesState())
     val state: State<MoviesState> = _state
-
     private var job: Job? = null
+
+    init {
+        getMovies("harry")
+    }
 
     private fun getMovies(search: String) {
         job?.cancel()
